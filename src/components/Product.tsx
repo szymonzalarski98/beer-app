@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { deviceWidth, colors, fontSize } from '../styles/dimensions.js';
+import { deviceWidth } from '../styles/helpers.style';
+import Property from './Property';
 
 // name, image, tags for filter
 interface Props {
@@ -9,19 +10,25 @@ interface Props {
   name: String;
   image: String;
   abv: number,
-  ph: number,
+  ibu: number,
 };
 
 const Product: React.SFC<Props> = (props) => {
-  const { name, image, abv, ph, id } = props;
+  const { name, image, abv, ibu, id } = props;
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details', { id })} style={styles.container}>
-      <Image source={{ uri: image }} style={styles.image} resizeMode={'contain'} />
+    <TouchableOpacity testID="product" onPress={() => navigation.navigate('Details', { id })} style={styles.container}>
+      {
+        image !== null
+        ?
+        <Image source={{ uri: image }} style={styles.image} resizeMode={'contain'} />
+        :
+        <View style={styles.blankImage} />
+      }
       <View style={styles.infoContainer}>
-        <Text style={styles.text}><Text style={styles.label}>Name: </Text>{name}</Text>
-        <Text style={styles.text}><Text style={styles.label}>Alcohol by volume: </Text>{abv}</Text>
-        <Text style={styles.text}><Text style={styles.label}>pH: </Text>{ph}</Text>
+        <Property title="" text={name} />
+        <Property title="Alcohol by volume: " text={abv} />
+        <Property title="Ibu: " text={ibu} />
       </View>
     </TouchableOpacity>
   );
@@ -50,11 +57,10 @@ const styles =  StyleSheet.create({
     width: 80,
     height: 80,
   },
-  text: {
-    color: colors.text,
-    fontSize: fontSize.medium,
-  },
-  label: {
-    fontWeight: '600',
-  },
+  blankImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 5,
+    backgroundColor: '#fafafa'
+  }
 });

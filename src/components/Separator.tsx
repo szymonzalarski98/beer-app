@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { deviceWidth, colors } from '../styles/dimensions.js';
+import { deviceWidth, colors } from '../styles/helpers.style.js';
 
-const Separator = () => <View style={styles.separator} />;
+const Separator = () => <View testID="separator" style={styles.separator} />;
 
 export default Separator;
 

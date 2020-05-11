@@ -1,0 +1,8 @@
+export const FILTERS_VISIBILITY = 'FILTERS_VISIBILITY';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+export const UPDATE_DATA = 'UPDATE_DATA';
+export const RESET_DATA = 'RESET_DATA';
+export const SET_ABV_FROM_VALUE = 'SET_ABV_FROM_VALUE';
+export const SET_ABV_TO_VALUE = 'SET_ABV_TO_VALUE';
+export const SET_IBU_FROM_VALUE = 'SET_IBU_FROM_VALUE';
+export const SET_IBU_TO_VALUE = 'SET_IBU_TO_VALUE';
